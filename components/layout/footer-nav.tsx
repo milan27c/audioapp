@@ -16,7 +16,7 @@ export function FooterNav() {
 
   return (
     <nav className="pointer-events-none fixed inset-x-0 bottom-0 z-30 flex justify-center px-4 pb-[calc(env(safe-area-inset-bottom)+0.75rem)]">
-      <div className="glass-nav pointer-events-auto flex items-center gap-0.5 rounded-full px-1.5 py-1.5 shadow-lg">
+      <div className="glass-nav pointer-events-auto flex items-center gap-[2.5px] rounded-full px-2 py-1.5 shadow-lg">
         {items.map(({ key, label, icon: Icon }) => {
           const isActive = key === active;
           return (
@@ -24,7 +24,7 @@ export function FooterNav() {
               key={key}
               type="button"
               onClick={() => setActive(key)}
-              className="flex flex-col items-center gap-0.5 rounded-full px-2.5 py-1.5 transition-transform active:scale-95"
+              className="flex flex-col items-center gap-0.5 rounded-full px-3 py-1.5 transition-transform active:scale-95"
             >
               <Icon
                 className={cn(
