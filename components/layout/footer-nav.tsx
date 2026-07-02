@@ -24,18 +24,18 @@ export function FooterNav() {
               key={key}
               type="button"
               onClick={() => setActive(key)}
-              className="flex flex-col items-center gap-0.5 rounded-full px-3 py-1.5 transition-transform active:scale-95"
+              className="flex flex-col items-center gap-0.5 rounded-full px-2.5 py-1.5 transition-transform active:scale-95"
             >
               <Icon
                 className={cn(
-                  "size-[18px]",
+                  "size-6",
                   isActive ? "text-primary-500 dark:text-white" : "text-foreground/50",
                 )}
                 strokeWidth={1.75}
               />
               <span
                 className={cn(
-                  "text-[9px] font-medium",
+                  "text-[10px] font-medium",
                   isActive ? "text-primary-500 dark:text-white" : "text-foreground/50",
                 )}
               >
