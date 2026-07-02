@@ -79,7 +79,7 @@ export function FrequencyDial({
 
   return (
     <div
-      className="relative h-24 touch-none select-none overflow-hidden"
+      className="relative h-24 w-full touch-none select-none overflow-hidden"
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
@@ -95,7 +95,7 @@ export function FrequencyDial({
           return (
             <div
               key={freq}
-              className="absolute bottom-6 flex -translate-x-1/2 flex-col items-center"
+              className="absolute bottom-6 flex -translate-x-1/2 flex-col-reverse items-center"
               style={{ left: position(freq) }}
             >
               <div
@@ -107,7 +107,7 @@ export function FrequencyDial({
                 style={{ height: station ? 32 : isMajor ? 20 : 10 }}
               />
               {isMajor && (
-                <span className="mt-1 text-[10px] tabular-nums text-foreground/40">
+                <span className="mb-1 text-[10px] tabular-nums text-foreground/40">
                   {Math.round(freq)}
                 </span>
               )}

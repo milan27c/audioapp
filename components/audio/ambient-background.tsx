@@ -16,7 +16,14 @@ function rotate<T>(arr: T[], n: number) {
   return [...arr.slice(i), ...arr.slice(0, i)];
 }
 
-export function AmbientBackground({ colors }: { colors: string[] }) {
+export function AmbientBackground({
+  colors,
+  speed = 1,
+}: {
+  colors: string[];
+  /** Multiplies animation speed — 1 is normal, 2 is twice as fast. */
+  speed?: number;
+}) {
   const reducedMotion = useReducedMotion();
   const palette = colors.length >= 2 ? colors : FALLBACK_PALETTE;
 
@@ -29,7 +36,7 @@ export function AmbientBackground({ colors }: { colors: string[] }) {
         return (
           <motion.div
             key={i}
-            className="absolute rounded-full opacity-55 blur-[65px] dark:opacity-80"
+            className="absolute rounded-full opacity-40 blur-[65px] dark:opacity-60"
             style={{
               width: blob.size,
               height: blob.size,
@@ -48,11 +55,11 @@ export function AmbientBackground({ colors }: { colors: string[] }) {
             }
             transition={{
               backgroundColor: {
-                duration: (blob.duration * 1.6) / 3,
+                duration: (blob.duration * 1.6) / 3 / speed,
                 repeat: Infinity,
                 ease: "linear",
               },
-              default: { duration: blob.duration, repeat: Infinity, ease: "easeInOut" },
+              default: { duration: blob.duration / speed, repeat: Infinity, ease: "easeInOut" },
             }}
           />
         );

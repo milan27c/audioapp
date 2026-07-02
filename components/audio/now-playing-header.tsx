@@ -1,7 +1,6 @@
 "use client";
 
 import { ChevronLeft, Bluetooth, Usb, Settings2 } from "lucide-react";
-import { ThemeToggle } from "@/components/layout/theme-toggle";
 
 type Connection = "bluetooth" | "usb";
 
@@ -33,7 +32,6 @@ export function NowPlayingHeader({
       </div>
 
       <div className="flex items-center gap-2">
-        <ThemeToggle />
         <button
           type="button"
           aria-label="Equalizer settings"

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { ThemeProvider } from "@/components/layout/theme-provider";
+import { PlaybackProvider } from "@/components/layout/playback-context";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -22,8 +23,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full antialiased" suppressHydrationWarning>
       <body className="min-h-full flex flex-col font-sans">
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          <PlaybackProvider>{children}</PlaybackProvider>
         </ThemeProvider>
       </body>
     </html>

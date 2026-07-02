@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Disc3, SlidersHorizontal, Radio, Settings } from "lucide-react";
+import { MiniPlayer } from "@/components/audio/mini-player";
 import { cn } from "@/lib/utils";
 
 const items = [
@@ -16,7 +17,8 @@ export function FooterNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="pointer-events-none fixed inset-x-0 bottom-0 z-30 flex justify-center px-4 pb-[calc(env(safe-area-inset-bottom)+0.75rem)]">
+    <nav className="pointer-events-none fixed inset-x-0 bottom-0 z-30 flex flex-col items-center gap-2 px-4 pb-[calc(env(safe-area-inset-bottom)+0.75rem)]">
+      <MiniPlayer />
       <div className="glass-nav pointer-events-auto flex items-center gap-2 rounded-full px-3 py-1.5 shadow-lg">
         {items.map(({ key, label, icon: Icon, href }) => {
           const isActive = pathname === href;

@@ -101,7 +101,7 @@ Framer Motion is the standard for all non-trivial motion. Conventions:
 
 ## Theming Implementation
 
-- Use `next-themes` for light/dark mode with a class-based strategy (`class="dark"` on `<html>`), so mode can be toggled from Settings rather than only following system preference. Default to `system` on first load, but make the toggle explicit and persistent.
+- Use `next-themes` for light/dark mode with a class-based strategy (`class="dark"` on `<html>`), toggled from Settings (`components/settings/settings-screen.tsx`) rather than following system preference. Default to `dark` on first load (`enableSystem={false}`) — dark mode is the primary experience per the Brand Identity section above — but keep the toggle explicit and persistent once the user sets a preference.
 - Define the full palette above as CSS variables in `app/globals.css` under `@theme`/`:root` (light values) and `.dark` (dark values), matching the Tailwind v4 `@theme inline` pattern already present in this project — extend it, don't replace the existing `--background`/`--foreground` pattern, just add the brand tokens alongside it.
 - Never hardcode hex colors inside component files; always reference the theme tokens (e.g. `bg-primary-500`, `text-primary-300`, `shadow-glow`).
 

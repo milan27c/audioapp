@@ -5,9 +5,13 @@ import { ListMusic, SkipBack, Play, Pause, SkipForward, Shuffle } from "lucide-r
 export function TransportControls({
   playing,
   onTogglePlay,
+  onPrevious,
+  onNext,
 }: {
   playing: boolean;
   onTogglePlay: () => void;
+  onPrevious: () => void;
+  onNext: () => void;
 }) {
   return (
     <div className="flex items-center justify-between px-2">
@@ -22,6 +26,7 @@ export function TransportControls({
       <button
         type="button"
         aria-label="Previous track"
+        onClick={onPrevious}
         className="flex size-11 items-center justify-center rounded-full text-foreground transition-transform active:scale-90"
       >
         <SkipBack className="size-6" strokeWidth={1.75} fill="currentColor" />
@@ -43,6 +48,7 @@ export function TransportControls({
       <button
         type="button"
         aria-label="Next track"
+        onClick={onNext}
         className="flex size-11 items-center justify-center rounded-full text-foreground transition-transform active:scale-90"
       >
         <SkipForward className="size-6" strokeWidth={1.75} fill="currentColor" />

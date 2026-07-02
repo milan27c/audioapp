@@ -1,15 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ChevronLeft, ChevronRight, Play, Pause, Star } from "lucide-react";
 import { RadioHeader } from "@/components/audio/radio-header";
 import { FrequencyDial } from "@/components/audio/frequency-dial";
 import { FavoriteStations } from "@/components/audio/favorite-stations";
-import { useAmbientPalette } from "@/components/layout/ambient-context";
+import { usePlayback } from "@/components/layout/playback-context";
 import { radioStations, FM_MIN, FM_MAX, defaultFavoriteFrequencies } from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
 
-const RADIO_AMBIENT_PALETTE = ["#80246D", "#EE2BC7", "#F53D99"];
 const MATCH_EPSILON = 0.05;
 
 function findStation(freq: number) {
@@ -17,18 +16,25 @@ function findStation(freq: number) {
 }
 
 export function RadioScreen() {
-  const { setPalette } = useAmbientPalette();
-  const [frequency, setFrequency] = useState(radioStations[2].frequency);
-  const [playing, setPlaying] = useState(false);
+  const { source, playing, playRadio, togglePlay } = usePlayback();
+  const [frequency, setFrequencyState] = useState(
+    source?.kind === "radio" ? source.frequency : radioStations[2].frequency,
+  );
   const [favorites, setFavorites] = useState<number[]>(defaultFavoriteFrequencies);
 
-  useEffect(() => {
-    setPalette(RADIO_AMBIENT_PALETTE);
-  }, [setPalette]);
+  const isActiveSource = source?.kind === "radio";
+  const isPlaying = isActiveSource && playing;
 
   const activeStation = findStation(frequency);
   const isFavorite = favorites.some((f) => Math.abs(f - frequency) < MATCH_EPSILON);
   const sortedStations = [...radioStations].sort((a, b) => a.frequency - b.frequency);
+
+  // Tuning while the radio is the live/playing source updates the stream
+  // immediately (like a real dial); otherwise it just moves the display.
+  function setFrequency(next: number) {
+    setFrequencyState(next);
+    if (isActiveSource && playing) playRadio(next);
+  }
 
   function goToStation(direction: 1 | -1) {
     if (direction === 1) {
@@ -49,8 +55,16 @@ export function RadioScreen() {
     );
   }
 
+  function handlePlayToggle() {
+    if (isActiveSource) {
+      togglePlay();
+    } else {
+      playRadio(frequency);
+    }
+  }
+
   return (
-    <div className="flex flex-1 flex-col px-4 pb-24">
+    <div className="flex min-w-0 flex-1 flex-col px-4 pb-24">
       <RadioHeader />
 
       <div className="mt-10 flex flex-col items-center text-center">
@@ -114,11 +128,11 @@ export function RadioScreen() {
       <div className="mt-8 flex justify-center">
         <button
           type="button"
-          aria-label={playing ? "Stop" : "Play"}
-          onClick={() => setPlaying((p) => !p)}
+          aria-label={isPlaying ? "Stop" : "Play"}
+          onClick={handlePlayToggle}
           className="glow-primary flex size-16 items-center justify-center rounded-full bg-primary-500 text-primary-50 transition-transform active:scale-90"
         >
-          {playing ? (
+          {isPlaying ? (
             <Pause className="size-7" strokeWidth={1.75} fill="currentColor" />
           ) : (
             <Play className="ml-0.5 size-7" strokeWidth={1.75} fill="currentColor" />

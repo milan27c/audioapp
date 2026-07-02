@@ -30,8 +30,8 @@ export function FavoriteStations({
             type="button"
             onClick={() => onSelect(freq)}
             className={cn(
-              "flex shrink-0 flex-col items-center gap-0.5 rounded-2xl px-4 py-2.5 transition-transform active:scale-95",
-              isActive ? "glow-primary bg-primary-500 text-primary-50" : "glass text-foreground",
+              "glass flex shrink-0 flex-col items-center gap-0.5 rounded-2xl px-4 py-2.5 transition-transform active:scale-95",
+              isActive ? "text-primary-500 dark:text-white" : "text-foreground",
             )}
           >
             <span className="text-sm font-semibold tabular-nums">{freq.toFixed(1)}</span>
