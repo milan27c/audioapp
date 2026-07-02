@@ -25,3 +25,24 @@ export const deviceStatus = {
   name: "AB-828",
   connection: "bluetooth" as const,
 };
+
+export type RadioStation = {
+  frequency: number;
+  name: string;
+};
+
+export const FM_MIN = 88.0;
+export const FM_MAX = 108.0;
+
+export const radioStations: RadioStation[] = [
+  { frequency: 88.5, name: "Coastal Waves" },
+  { frequency: 90.3, name: "Retro Replay" },
+  { frequency: 92.7, name: "City Beats FM" },
+  { frequency: 95.1, name: "Deep Focus" },
+  { frequency: 97.8, name: "Night Drive" },
+  { frequency: 101.2, name: "Indie Airwaves" },
+  { frequency: 104.5, name: "Groove Garden" },
+  { frequency: 107.9, name: "The Vault" },
+];
+
+export const defaultFavoriteFrequencies = [92.7, 95.1, 101.2, 104.5];
