@@ -4,9 +4,11 @@ import { useEffect, useState } from "react";
 import { Moon } from "lucide-react";
 import { useTheme } from "next-themes";
 import { AppBar } from "@/components/layout/app-bar";
+import { useDeviceAmbient } from "@/components/layout/use-device-ambient";
 import { cn } from "@/lib/utils";
 
 export function SettingsScreen() {
+  useDeviceAmbient();
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 

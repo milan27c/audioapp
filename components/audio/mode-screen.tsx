@@ -1,27 +1,12 @@
 "use client";
 
-import { useEffect } from "react";
 import Link from "next/link";
 import { Music2, Radio as RadioIcon } from "lucide-react";
 import { AppBar } from "@/components/layout/app-bar";
-import { useAmbientPalette } from "@/components/layout/ambient-context";
-
-// Deep, dark shades of our own primary/neon tokens (primary-950/800/700 +
-// neon-magenta) — deliberately darker than the vivid song/radio palettes,
-// but still saturated enough to read as neon. Fixed for the Mode screen:
-// never swapped for the currently playing track/station's colors.
-const MODE_PALETTE = ["#1C0818", "#310E29", "#431339", "#57184A", "#EE2BC7"];
-const MODE_SPEED = 2.5;
+import { useDeviceAmbient } from "@/components/layout/use-device-ambient";
 
 export function ModeScreen() {
-  const { setPalette, setSpeed, setLocked } = useAmbientPalette();
-
-  useEffect(() => {
-    setPalette(MODE_PALETTE);
-    setSpeed(MODE_SPEED);
-    setLocked(true);
-    return () => setLocked(false);
-  }, [setPalette, setSpeed, setLocked]);
+  useDeviceAmbient();
 
   return (
     <div className="flex flex-1 flex-col px-4 pb-24">

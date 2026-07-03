@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { Bluetooth, BatteryFull, RefreshCw, Link2, Unlink } from "lucide-react";
 import { AppBar } from "@/components/layout/app-bar";
+import { useDeviceAmbient } from "@/components/layout/use-device-ambient";
 import { deviceStatus } from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
 
@@ -28,6 +29,7 @@ function InfoRow({
 }
 
 export function DeviceLinkScreen() {
+  useDeviceAmbient();
   const [linked, setLinked] = useState(true);
 
   return (

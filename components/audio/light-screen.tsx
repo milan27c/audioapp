@@ -4,12 +4,14 @@ import { useState, type CSSProperties } from "react";
 import { Power } from "lucide-react";
 import { AppBar } from "@/components/layout/app-bar";
 import { JblLightPreview } from "@/components/audio/jbl-light-preview";
+import { useDeviceAmbient } from "@/components/layout/use-device-ambient";
 import { lightColors, lightModes } from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
 
 export type LightMode = (typeof lightModes)[number];
 
 export function LightScreen() {
+  useDeviceAmbient();
   const [isOn, setIsOn] = useState(true);
   const [brightness, setBrightness] = useState(70);
   const [color, setColor] = useState(lightColors[0].value);

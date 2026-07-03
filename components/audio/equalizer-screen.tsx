@@ -6,9 +6,12 @@ import { EqualizerTabs, type EqTabKey } from "@/components/audio/equalizer-tabs"
 import { EqualizerBands } from "@/components/audio/equalizer-bands";
 import { EqPresets } from "@/components/audio/eq-presets";
 import { usePlayback } from "@/components/layout/playback-context";
+import { useDeviceAmbient } from "@/components/layout/use-device-ambient";
 import { eqPresets, EQ_MIN_DB, EQ_MAX_DB, type EqPreset } from "@/lib/mock-data";
 
 export function EqualizerScreen() {
+  useDeviceAmbient();
+
   // EQ state lives in the global playback context so it drives the live Web
   // Audio filter graph — dragging a band or picking a preset shapes the sound
   // of whatever is currently playing.
