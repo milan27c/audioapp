@@ -5,6 +5,8 @@ import { AppBar } from "@/components/layout/app-bar";
 import { EqualizerTabs, type EqTabKey } from "@/components/audio/equalizer-tabs";
 import { EqualizerBands } from "@/components/audio/equalizer-bands";
 import { EqPresets } from "@/components/audio/eq-presets";
+import { BassPanel } from "@/components/audio/bass-panel";
+import { MicPanel } from "@/components/audio/mic-panel";
 import { usePlayback } from "@/components/layout/playback-context";
 import { useDeviceAmbient } from "@/components/layout/use-device-ambient";
 import { eqPresets, EQ_MIN_DB, EQ_MAX_DB, type EqPreset } from "@/lib/mock-data";
@@ -37,7 +39,7 @@ export function EqualizerScreen() {
         <EqualizerTabs active={activeTab} onChange={setActiveTab} />
       </div>
 
-      {activeTab === "equalizer" ? (
+      {activeTab === "equalizer" && (
         <>
           <div className="mt-8">
             <EqualizerBands bands={eqBands} min={EQ_MIN_DB} max={EQ_MAX_DB} onChange={updateBand} />
@@ -47,13 +49,11 @@ export function EqualizerScreen() {
             <EqPresets presets={eqPresets} activePreset={activePreset} onSelectPreset={applyPreset} />
           </div>
         </>
-      ) : (
-        <div className="mt-24 flex flex-1 flex-col items-center text-center">
-          <p className="text-sm font-medium text-foreground/50">
-            {activeTab === "bass" ? "Bass control" : "Microphone control"} — coming soon
-          </p>
-        </div>
       )}
+
+      {activeTab === "bass" && <BassPanel />}
+
+      {activeTab === "mic" && <MicPanel />}
     </div>
   );
 }
