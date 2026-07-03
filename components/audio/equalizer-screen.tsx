@@ -1,18 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { NowPlayingHeader } from "@/components/audio/now-playing-header";
+import { AppBar } from "@/components/layout/app-bar";
 import { EqualizerTabs, type EqTabKey } from "@/components/audio/equalizer-tabs";
 import { EqualizerBands } from "@/components/audio/equalizer-bands";
 import { EqPresets } from "@/components/audio/eq-presets";
 import { usePlayback } from "@/components/layout/playback-context";
-import {
-  deviceStatus,
-  eqPresets,
-  EQ_MIN_DB,
-  EQ_MAX_DB,
-  type EqPreset,
-} from "@/lib/mock-data";
+import { eqPresets, EQ_MIN_DB, EQ_MAX_DB, type EqPreset } from "@/lib/mock-data";
 
 export function EqualizerScreen() {
   // EQ state lives in the global playback context so it drives the live Web
@@ -34,7 +28,7 @@ export function EqualizerScreen() {
 
   return (
     <div className="flex flex-1 flex-col px-4 pb-24">
-      <NowPlayingHeader deviceName={deviceStatus.name} connection={deviceStatus.connection} />
+      <AppBar />
 
       <div className="mt-6 flex justify-center">
         <EqualizerTabs active={activeTab} onChange={setActiveTab} />

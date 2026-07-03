@@ -55,16 +55,16 @@ export function MiniPlayer() {
       <button
         type="button"
         aria-label="Cast to device"
-        className="flex size-8 shrink-0 items-center justify-center text-foreground/50 transition-transform active:scale-90"
+        className="knob-btn flex size-8 shrink-0 items-center justify-center rounded-full transition-transform"
       >
-        <Cast className="size-[18px]" strokeWidth={1.75} />
+        <Cast className="size-[16px]" strokeWidth={1.75} />
       </button>
 
       <button
         type="button"
         aria-label={playing ? "Pause" : "Play"}
         onClick={togglePlay}
-        className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary-500 text-primary-50 transition-transform active:scale-90"
+        className="knob-btn-primary flex size-9 shrink-0 items-center justify-center rounded-full transition-transform"
       >
         {playing ? (
           <Pause className="size-4" strokeWidth={1.75} fill="currentColor" />

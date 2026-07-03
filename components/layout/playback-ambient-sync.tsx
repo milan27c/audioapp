@@ -22,7 +22,7 @@ const SONG_SPEED = 1;
  */
 export function PlaybackAmbientSync() {
   const { source, currentSong } = usePlayback();
-  const { setPalette, setSpeed } = useAmbientPalette();
+  const { setPalette, setSpeed, locked } = useAmbientPalette();
   const [songPalette, setSongPalette] = useState<string[]>([]);
 
   useEffect(() => {
@@ -36,6 +36,7 @@ export function PlaybackAmbientSync() {
   }, [currentSong.artwork]);
 
   useEffect(() => {
+    if (locked) return;
     if (source?.kind === "radio") {
       setPalette(RADIO_PALETTE);
       setSpeed(RADIO_SPEED);
@@ -43,7 +44,7 @@ export function PlaybackAmbientSync() {
       setPalette(songPalette);
       setSpeed(SONG_SPEED);
     }
-  }, [source, songPalette, setPalette, setSpeed]);
+  }, [source, songPalette, locked, setPalette, setSpeed]);
 
   return null;
 }

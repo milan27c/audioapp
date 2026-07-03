@@ -1,11 +1,10 @@
 "use client";
 
-import { NowPlayingHeader } from "@/components/audio/now-playing-header";
+import { AppBar } from "@/components/layout/app-bar";
 import { RotaryDial } from "@/components/audio/rotary-dial";
 import { ProgressBar } from "@/components/audio/progress-bar";
 import { TransportControls } from "@/components/audio/transport-controls";
 import { usePlayback } from "@/components/layout/playback-context";
-import { deviceStatus } from "@/lib/mock-data";
 
 export function NowPlayingScreen() {
   const {
@@ -43,7 +42,7 @@ export function NowPlayingScreen() {
 
   return (
     <div className="flex flex-1 flex-col px-4 pb-24">
-      <NowPlayingHeader deviceName={deviceStatus.name} connection={deviceStatus.connection} />
+      <AppBar back="/" />
 
       <div className="mt-4 flex justify-center">
         <RotaryDial

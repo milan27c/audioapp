@@ -22,8 +22,8 @@ export function EqPresets({
             type="button"
             onClick={() => onSelectPreset(preset)}
             className={cn(
-              "glass shrink-0 rounded-full px-4 py-2 text-sm font-medium transition-transform active:scale-95",
-              isActive ? "text-primary-500 dark:text-white" : "text-foreground/60",
+              "shrink-0 rounded-full px-4 py-2 text-sm font-medium transition-transform active:scale-95",
+              isActive ? "knob-btn-primary" : "knob-btn",
             )}
           >
             {preset.name}

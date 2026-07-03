@@ -1,11 +1,11 @@
 import { MobileShell } from "@/components/layout/mobile-shell";
 import { FooterNav } from "@/components/layout/footer-nav";
-import { ModeScreen } from "@/components/audio/mode-screen";
+import { DeviceLinkScreen } from "@/components/device/device-link-screen";
 
-export default function Home() {
+export default function LinkPage() {
   return (
     <MobileShell>
-      <ModeScreen />
+      <DeviceLinkScreen />
       <FooterNav />
     </MobileShell>
   );

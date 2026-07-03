@@ -5,10 +5,9 @@ import { motion, useReducedMotion } from "framer-motion";
 const FALLBACK_PALETTE = ["#80246D", "#EE2BC7", "#310E29"];
 
 const BLOB_LAYOUT = [
-  { size: 320, left: "-10%", top: "-15%", duration: 14 },
-  { size: 300, left: "45%", top: "-10%", duration: 18 },
-  { size: 300, left: "10%", top: "20%", duration: 16 },
-  { size: 260, left: "60%", top: "25%", duration: 20 },
+  { size: 340, left: "-15%", top: "-20%", duration: 11 },
+  { size: 320, left: "40%", top: "-15%", duration: 14 },
+  { size: 300, left: "10%", top: "15%", duration: 12.5 },
 ];
 
 function rotate<T>(arr: T[], n: number) {
@@ -48,9 +47,9 @@ export function AmbientBackground({
                 ? { backgroundColor: sequence[0] }
                 : {
                     backgroundColor: colorLoop,
-                    x: [0, 30, -24, 0],
-                    y: [0, -24, 20, 0],
-                    scale: [1, 1.15, 0.92, 1],
+                    x: [0, 50, -40, 15, 0],
+                    y: [0, -36, 28, -12, 0],
+                    scale: [1, 1.2, 0.88, 1.08, 1],
                   }
             }
             transition={{

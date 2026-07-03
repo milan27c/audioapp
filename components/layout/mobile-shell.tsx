@@ -45,7 +45,7 @@ export function MobileShell({ children }: { children: React.ReactNode }) {
                 </svg>
               </div>
             </div>
-            <div className="relative z-10 flex min-w-0 flex-1 flex-col overflow-y-auto overflow-x-hidden pt-[env(safe-area-inset-top)] sm:pt-6">
+            <div className="relative z-10 flex min-w-0 flex-1 flex-col overflow-y-auto overflow-x-hidden pt-[env(safe-area-inset-top)] pb-[100px] sm:pt-6">
               {children}
             </div>
           </AmbientPaletteProvider>

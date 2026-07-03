@@ -18,16 +18,16 @@ export function TransportControls({
       <button
         type="button"
         aria-label="Queue"
-        className="flex size-10 items-center justify-center rounded-full text-foreground/70 transition-transform active:scale-90"
+        className="knob-btn flex size-9 items-center justify-center rounded-full transition-transform"
       >
-        <ListMusic className="size-[19px]" strokeWidth={1.75} />
+        <ListMusic className="size-[17px]" strokeWidth={1.75} />
       </button>
 
       <button
         type="button"
         aria-label="Previous track"
         onClick={onPrevious}
-        className="flex size-11 items-center justify-center rounded-full text-foreground transition-transform active:scale-90"
+        className="knob-btn flex size-12 items-center justify-center rounded-full transition-transform"
       >
         <SkipBack className="size-6" strokeWidth={1.75} fill="currentColor" />
       </button>
@@ -36,7 +36,7 @@ export function TransportControls({
         type="button"
         aria-label={playing ? "Pause" : "Play"}
         onClick={onTogglePlay}
-        className="glow-primary flex size-16 items-center justify-center rounded-full bg-primary-500 text-primary-50 transition-transform active:scale-90"
+        className="knob-btn-primary flex size-16 items-center justify-center rounded-full transition-transform"
       >
         {playing ? (
           <Pause className="size-7" strokeWidth={1.75} fill="currentColor" />
@@ -49,7 +49,7 @@ export function TransportControls({
         type="button"
         aria-label="Next track"
         onClick={onNext}
-        className="flex size-11 items-center justify-center rounded-full text-foreground transition-transform active:scale-90"
+        className="knob-btn flex size-12 items-center justify-center rounded-full transition-transform"
       >
         <SkipForward className="size-6" strokeWidth={1.75} fill="currentColor" />
       </button>
@@ -57,9 +57,9 @@ export function TransportControls({
       <button
         type="button"
         aria-label="Shuffle"
-        className="flex size-10 items-center justify-center rounded-full text-foreground/70 transition-transform active:scale-90"
+        className="knob-btn flex size-9 items-center justify-center rounded-full transition-transform"
       >
-        <Shuffle className="size-[19px]" strokeWidth={1.75} />
+        <Shuffle className="size-[17px]" strokeWidth={1.75} />
       </button>
     </div>
   );

@@ -1,11 +1,11 @@
 import { MobileShell } from "@/components/layout/mobile-shell";
 import { FooterNav } from "@/components/layout/footer-nav";
-import { ModeScreen } from "@/components/audio/mode-screen";
+import { NowPlayingScreen } from "@/components/audio/now-playing-screen";
 
-export default function Home() {
+export default function TrackPage() {
   return (
     <MobileShell>
-      <ModeScreen />
+      <NowPlayingScreen />
       <FooterNav />
     </MobileShell>
   );

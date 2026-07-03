@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
-import { ChevronLeft, Moon } from "lucide-react";
+import { Moon } from "lucide-react";
 import { useTheme } from "next-themes";
+import { AppBar } from "@/components/layout/app-bar";
 import { cn } from "@/lib/utils";
 
 export function SettingsScreen() {
@@ -16,18 +16,11 @@ export function SettingsScreen() {
 
   return (
     <div className="flex flex-1 flex-col px-4 pb-24">
-      <header className="flex items-center gap-3 pt-[calc(env(safe-area-inset-top)+0.5rem)]">
-        <Link
-          href="/"
-          aria-label="Back"
-          className="flex size-10 items-center justify-center rounded-full glass text-foreground transition-transform active:scale-90"
-        >
-          <ChevronLeft className="size-5" strokeWidth={1.75} />
-        </Link>
-        <h1 className="text-lg font-semibold text-foreground">Settings</h1>
-      </header>
+      <AppBar back="/" />
 
       <div className="mt-8">
+        <h1 className="mb-4 px-1 text-lg font-semibold text-foreground">Settings</h1>
+
         <h2 className="px-1 text-xs font-semibold tracking-wide text-foreground/40 uppercase">
           Appearance
         </h2>

@@ -110,6 +110,63 @@ body {
   box-shadow: 0 8px 24px -8px color-mix(in srgb, var(--color-primary-500) 15%, transparent);
 }
 
+/*
+ * Physical device housing/panel — the same dark hardware language as
+ * .knob-btn but for a flat panel rather than a circular control. Used for
+ * the footer nav's casing so it reads as the AB-828's control panel, with
+ * the buttons mounted on it.
+ */
+.panel-3d {
+  background: linear-gradient(180deg, #2c2c32 0%, #1e1e22 55%, #131316 100%);
+  border: 1px solid rgba(0, 0, 0, 0.55);
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -2px 5px rgba(0, 0, 0, 0.45);
+}
+
+/*
+ * Physical hardware-knob button style — dark beveled charcoal disc with a
+ * highlight catching the top-left, a soft drop shadow, and a pressed-in
+ * shadow on tap. Deliberately theme-invariant (stays dark in light mode too)
+ * since it's meant to read as a real control on the AB-828 device, not a
+ * themed UI surface. No color glow — depth comes from shading, not light.
+ */
+.knob-btn {
+  background: radial-gradient(circle at 32% 28%, #55555e, #2c2c33 55%, #18181b 100%);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  box-shadow:
+    0 3px 6px rgba(0, 0, 0, 0.45),
+    inset 0 1px 1px rgba(255, 255, 255, 0.14),
+    inset 0 -3px 4px rgba(0, 0, 0, 0.55);
+  color: #f0eef2;
+}
+
+.knob-btn:active {
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.55);
+  transform: scale(0.94);
+}
+
+.knob-btn-primary {
+  background: radial-gradient(
+    circle at 32% 28%,
+    var(--color-primary-300),
+    var(--color-primary-500) 55%,
+    var(--color-primary-800) 100%
+  );
+  border: 1px solid rgba(0, 0, 0, 0.45);
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.4),
+    inset 0 -3px 5px rgba(0, 0, 0, 0.4);
+  color: #ffffff;
+}
+
+.knob-btn-primary:active {
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.45);
+  transform: scale(0.94);
+}
+
 .glow-primary {
   filter: drop-shadow(0 0 6px color-mix(in srgb, var(--color-primary-500) 70%, transparent))
     drop-shadow(0 0 18px color-mix(in srgb, var(--color-primary-500) 35%, transparent));
@@ -123,15 +180,17 @@ body {
 .progress-range {
   -webkit-appearance: none;
   appearance: none;
-  height: 4px;
+  height: 6px;
   border-radius: 9999px;
   background: linear-gradient(
-    to right,
-    var(--color-primary-500) 0%,
-    var(--color-primary-500) var(--progress),
-    color-mix(in srgb, var(--color-foreground) 18%, transparent) var(--progress),
-    color-mix(in srgb, var(--color-foreground) 18%, transparent) 100%
-  );
+      to right,
+      var(--color-primary-500) 0%,
+      var(--color-primary-500) var(--progress),
+      transparent var(--progress),
+      transparent 100%
+    ),
+    color-mix(in srgb, var(--color-foreground) 12%, transparent);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.35);
   cursor: pointer;
   touch-action: none;
 }
@@ -139,36 +198,45 @@ body {
 .progress-range::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 14px;
-  height: 14px;
+  width: 18px;
+  height: 18px;
   margin-top: 0;
   border-radius: 9999px;
-  background: var(--color-primary-500);
-  box-shadow: 0 0 8px color-mix(in srgb, var(--color-primary-500) 60%, transparent);
+  background: radial-gradient(circle at 32% 28%, var(--color-primary-300), var(--color-primary-600) 70%);
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 3px rgba(0, 0, 0, 0.35);
   transition: transform 0.15s ease;
 }
 
 .progress-range::-webkit-slider-thumb:active {
-  transform: scale(1.2);
+  transform: scale(1.15);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .progress-range::-moz-range-track {
-  height: 4px;
+  height: 6px;
   border-radius: 9999px;
-  background: color-mix(in srgb, var(--color-foreground) 18%, transparent);
+  background: color-mix(in srgb, var(--color-foreground) 12%, transparent);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.35);
 }
 
 .progress-range::-moz-range-progress {
-  height: 4px;
+  height: 6px;
   border-radius: 9999px;
   background: var(--color-primary-500);
 }
 
 .progress-range::-moz-range-thumb {
-  width: 14px;
-  height: 14px;
-  border: none;
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
   border-radius: 9999px;
-  background: var(--color-primary-500);
-  box-shadow: 0 0 8px color-mix(in srgb, var(--color-primary-500) 60%, transparent);
+  background: radial-gradient(circle at 32% 28%, var(--color-primary-300), var(--color-primary-600) 70%);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 3px rgba(0, 0, 0, 0.35);
 }

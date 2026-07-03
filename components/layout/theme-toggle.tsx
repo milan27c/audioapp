@@ -15,7 +15,7 @@ export function ThemeToggle({ className }: { className?: string }) {
     return (
       <div
         className={cn(
-          "size-10 rounded-full glass",
+          "knob-btn size-10 rounded-full",
           className,
         )}
         aria-hidden
@@ -31,7 +31,7 @@ export function ThemeToggle({ className }: { className?: string }) {
       onClick={() => setTheme(isDark ? "light" : "dark")}
       aria-label="Toggle light/dark mode"
       className={cn(
-        "flex size-10 items-center justify-center rounded-full glass text-foreground transition-transform active:scale-90",
+        "knob-btn flex size-10 items-center justify-center rounded-full transition-transform",
         className,
       )}
     >

@@ -1,11 +1,11 @@
 import { MobileShell } from "@/components/layout/mobile-shell";
 import { FooterNav } from "@/components/layout/footer-nav";
-import { ModeScreen } from "@/components/audio/mode-screen";
+import { LightScreen } from "@/components/audio/light-screen";
 
-export default function Home() {
+export default function LightPage() {
   return (
     <MobileShell>
-      <ModeScreen />
+      <LightScreen />
       <FooterNav />
     </MobileShell>
   );

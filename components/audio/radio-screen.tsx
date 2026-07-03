@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, Play, Pause, Star } from "lucide-react";
-import { RadioHeader } from "@/components/audio/radio-header";
+import { AppBar } from "@/components/layout/app-bar";
 import { FrequencyDial } from "@/components/audio/frequency-dial";
 import { FavoriteStations } from "@/components/audio/favorite-stations";
 import { usePlayback } from "@/components/layout/playback-context";
@@ -65,7 +65,7 @@ export function RadioScreen() {
 
   return (
     <div className="flex min-w-0 flex-1 flex-col px-4 pb-24">
-      <RadioHeader />
+      <AppBar back="/" />
 
       <div className="mt-10 flex flex-col items-center text-center">
         <span className="text-sm font-medium text-foreground/70">
@@ -77,7 +77,7 @@ export function RadioScreen() {
             type="button"
             aria-label="Previous station"
             onClick={() => goToStation(-1)}
-            className="flex size-10 items-center justify-center rounded-full text-foreground/60 transition-transform active:scale-90"
+            className="knob-btn flex size-10 items-center justify-center rounded-full transition-transform"
           >
             <ChevronLeft className="size-6" strokeWidth={1.75} />
           </button>
@@ -93,7 +93,7 @@ export function RadioScreen() {
             type="button"
             aria-label="Next station"
             onClick={() => goToStation(1)}
-            className="flex size-10 items-center justify-center rounded-full text-foreground/60 transition-transform active:scale-90"
+            className="knob-btn flex size-10 items-center justify-center rounded-full transition-transform"
           >
             <ChevronRight className="size-6" strokeWidth={1.75} />
           </button>
@@ -130,7 +130,7 @@ export function RadioScreen() {
           type="button"
           aria-label={isPlaying ? "Stop" : "Play"}
           onClick={handlePlayToggle}
-          className="glow-primary flex size-16 items-center justify-center rounded-full bg-primary-500 text-primary-50 transition-transform active:scale-90"
+          className="knob-btn-primary flex size-16 items-center justify-center rounded-full transition-transform"
         >
           {isPlaying ? (
             <Pause className="size-7" strokeWidth={1.75} fill="currentColor" />

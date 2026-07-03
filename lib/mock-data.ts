@@ -46,6 +46,7 @@ export const currentTrack: Track = songs[0];
 export const deviceStatus = {
   name: "AB-828",
   connection: "bluetooth" as const,
+  battery: 82,
 };
 
 export type RadioStation = {
@@ -108,3 +109,16 @@ export const eqPresets: EqPreset[] = [
   { name: "Pop", values: [1, 2, 3, 4, 3, 1, 1, 2] },
   { name: "Classical", values: [3, 2, 1, 0, 0, 1, 2, 3] },
 ];
+
+export type LightColor = { name: string; value: string };
+
+export const lightColors: LightColor[] = [
+  { name: "Purple", value: "#9D4EDD" },
+  { name: "Pink", value: "#F53D99" },
+  { name: "Blue", value: "#2BBDEE" },
+  { name: "Green", value: "#34B273" },
+  { name: "Yellow", value: "#F4A825" },
+  { name: "Orange", value: "#FF7A1A" },
+];
+
+export const lightModes = ["Static", "Pulse", "Strobe", "Fade", "Rainbow"] as const;

@@ -17,9 +17,9 @@ export function EqualizerBands({
   onChange: (index: number, value: number) => void;
 }) {
   return (
-    <div className="glass relative flex justify-between rounded-3xl px-3 py-6">
+    <div className="panel-3d relative flex justify-between rounded-3xl px-3 py-6">
       <div
-        className="pointer-events-none absolute inset-x-4 border-t border-dashed border-foreground/25"
+        className="pointer-events-none absolute inset-x-4 border-t border-dashed border-white/20"
         style={{ top: `calc(1.5rem + ${TRACK_HEIGHT / 2}px)` }}
       />
 
